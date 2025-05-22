@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utazási Statisztikák - Utazásom</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fff);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #00796b;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      background-color: #004d40;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b2dfdb;
+    }
+
+    .container {
+      flex: 1;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .stats-table th, .stats-table td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .stats-table th {
+      background-color: #26a69a;
+      color: white;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 2rem;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    .info-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .info-link a {
+      color: #00796b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .info-link a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #004d40;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9em;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stats-table th, .stats-table td {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav>
+    <a href="index.html">Kezdőlap</a>
+    <a href="destinations.html">Úticélok</a>
+  </nav>
+
+  <div class="container">
+    <h2>Hová utaztam 2024-ben?</h2>
+    <table class="stats-table">
+      <tr>
+        <th>Hónap</th>
+        <th>Ország</th>
+        <th>Napok száma</th>
+      </tr>
+      <tr>
+        <td>Június</td>
+        <td>Olaszország</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Szeptember</td>
+        <td>Japán</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>December</td>
+        <td>Ausztrália</td>
+        <td>7</td>
+      </tr>
+    </table>
+
+    <h2>Kirándulásaim diagramon</h2>
+    <canvas id="tripChart" width="400" height="200"></canvas>
+
+ 
+
+    <div class="info-link">
+      <p>További adatokat találsz a <a href="https://en.wikipedia.org/wiki/Travel" target="_blank">Wikipedia – Travel</a> oldalán.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Készítette: Forró Dominik</p>
+  </footer>
+
+  <!-- Chart.js CDN és diagram -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('tripChart').getContext('2d');
+    const tripChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Június', 'Szeptember', 'December'],
+        datasets: [{
+          label: 'Napok száma',
+          data: [10, 14, 7],
+          backgroundColor: [
+            'rgba(38, 166, 154, 0.6)',
+            'rgba(255, 152, 0, 0.6)',
+            'rgba(66, 133, 244, 0.6)'
+          ],
+          borderColor: [
+            'rgba(38, 166, 154, 1)',
+            'rgba(255, 152, 0, 1)',
+            'rgba(66, 133, 244, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Napok száma'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Hónap'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: (context) => `${context.parsed.y} nap`
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

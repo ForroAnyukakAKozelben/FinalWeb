@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kezdőlap - Utazásom</title>
+  <style>
+    :root {
+      --main-bg: #e0f7fa;
+      --accent-color: #00796b;
+      --text-color: #333;
+      --link-color: #00695c;
+      --hover-color: #004d40;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--main-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+
+    }
+
+    header {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    nav a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--hover-color);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+
+
+    .intro {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .intro p {
+      margin-bottom: 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .recommendations {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .recommendations h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .recommendations ul {
+      list-style-type: disc;
+      margin-left: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1rem;
+      background-color: #b2dfdb;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav>
+    <a href="destinations.html">Úticélok</a>
+    <a href="gallery.html">Galéria</a>
+  </nav>
+
+  <div class="container">
+    <div class="intro">
+      <p>Ez az oldal egy személyes blogként szolgál, ahol megosztom a legizgalmasabb utazási élményeimet a világ különböző tájairól.</p>
+      <p>Legyen szó hegyekről, tengerpartokról vagy nyüzsgő nagyvárosokról, itt mindig találsz egy kis inspirációt a következő kalandodhoz.</p>
+      <p>Ha több ötletre vágysz, nézd meg a <a href="https://www.lonelyplanet.com/" target="_blank">Lonely Planet</a> utazási ajánlásait is.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="images/beach.jpg" alt="Tengerpart">
+      <img src="images/mountain.jpg" alt="Hegy">
+      <img src="images/city.jpg" alt="Város">
+    </div>
+
+    <div class="recommendations">
+      <h2>Ajánlott tevékenységek utazás közben</h2>
+      <ul>
+        <li>Próbálj ki helyi ételeket, ne csak a turistás helyeken!</li>
+        <li>Fedezd fel a természetet, túrázz vagy menj kajakozni.</li>
+        <li>Látogass meg legalább egy múzeumot vagy helyi kulturális központot.</li>
+        <li>Beszélgess a helyiekkel – egy új nyelv pár szava is sokat számít!</li>
+        <li>Készíts naplót vagy fotóblogot, hogy megőrizd az élményeket.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p id="yearText">Készítette: Forró Dominik</p>
+    <p>Disclaimer: A weboldal csak elképzelt utazásokból áll</p>
+  </footer>
+
+  <script>
+    // Egyszerű JavaScript: automatikus évszám
+    const yearText = document.getElementById("yearText");
+    const currentYear = new Date().getFullYear();
+    yearText.innerHTML = `Készítette: Forró Dominik &copy; ${currentYear}`;
+  </script>
+</body>
+</html>

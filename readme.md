@@ -28,17 +28,6 @@ projekt/
 ├── gallery.html
 └── README.md
 
-yaml
-Másolás
-Szerkesztés
-
----
-
-## 🖼️ Képernyőkép
-
-> *(Tölts fel ide egy screenshotot a weboldalról)*  
-> Pl.: ![Utazásom kezdőlap](images/screenshot.png)
-
 ---
 
 ## 💡 Példák és magyarázatok
@@ -57,18 +46,16 @@ body {
 .container {
   flex: 1;
 }
-Ez azt jelenti, hogy a .container kitölti a helyet a <header> és a <footer> között.
+```
+**Ez azt jelenti, hogy a .container kitölti a helyet a <header> és a <footer> között.**
 
-🔎 Kereső funkció a táblázathoz
-A destinations.html oldal tartalmaz egy valós idejű keresőt JavaScript segítségével:
+### 🔎 Kereső funkció a táblázathoz
+A destinations.html oldal tartalmaz egy **valós idejű** keresőt JavaScript segítségével:
 
-html
-Másolás
-Szerkesztés
+```html
 <input type="text" id="searchInput" placeholder="Szűrés ország vagy város alapján...">
-js
-Másolás
-Szerkesztés
+```
+```js
 document.getElementById("searchInput").addEventListener("input", function () {
   const filter = this.value.toLowerCase();
   const rows = document.querySelectorAll("#destinationTable tbody tr");
@@ -79,31 +66,31 @@ document.getElementById("searchInput").addEventListener("input", function () {
     row.style.display = (city.includes(filter) || country.includes(filter)) ? "" : "none";
   });
 });
-📅 Automatikus év megjelenítés a láblécben
+```
+## 📅 Automatikus év megjelenítés a láblécben
 Az index.html és gallery.html fájlban:
 
-html
-Másolás
-Szerkesztés
+```html
 <p id="yearText">Készítette: Forró Dominik</p>
-js
-Másolás
-Szerkesztés
+```
+```js
 const yearText = document.getElementById("yearText");
 const currentYear = new Date().getFullYear();
 yearText.innerHTML = `Készítette: Forró Dominik &copy; ${currentYear}`;
-✅ Technológiák
-HTML5
+```
 
-CSS3 (reszponzív flexbox-alapú elrendezés)
+### ✅ Technológiák
+**HTML5**
 
-Minimális, célorientált JavaScript
+**CSS3 (responsive flexbox-alapú elrendezés)**
 
-Chart.js (csak a gallery.html oldalon, CDN-en keresztül)
+**Minimális JavaScript**
 
-📚 Források
-Chart.js
+**Chart.js**
 
-Lonely Planet
+## 📚 Források
+**-Chart.js**
 
-UNESCO World Heritage
+**-Lonely Planet**
+
+**-UNESCO World Heritage**

@@ -14,10 +14,10 @@ A célja: egy letisztult, tartalmas és reszponzív élmény megvalósítása Ja
 
 ---
 
-## 📦 Mappastruktúra
+### 📦 Mappastruktúra
 
 projekt/
-│
+│   
 ├── images/
 │ ├── beach.jpg
 │ ├── mountain.jpg
